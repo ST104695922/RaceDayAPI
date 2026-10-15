@@ -16,3 +16,4 @@ RaceDayAPI.Tests/ — Unit tests
 Database/ — SQL database setup script
 
 .github/workflows/ — Automated build and test workflow
+The repository includes a GitHub Actions workflow under .github/workflows/dotnet.yml.
