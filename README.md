@@ -17,4 +17,4 @@ Database/ — SQL database setup script
 
 .github/workflows/ — Automated build and test workflow
 The repository includes a GitHub Actions workflow under .github/workflows/dotnet.yml.
-workflow doesnt work i tried
+workflow doesnt work i tried.
