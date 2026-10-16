@@ -19,3 +19,4 @@ Database/ — SQL database setup script
 The repository includes a GitHub Actions workflow under .github/workflows/dotnet.yml.
 workflow doesnt work i tried.
 <img width="1657" height="843" alt="image" src="https://github.com/user-attachments/assets/1ba3a4fa-f23f-4cf9-89b9-016a969e7649" />
+updated entire codeall controllers models tests data asw ell as database 
