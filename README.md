@@ -22,3 +22,4 @@ workflow doesnt work i tried.
 updated entire codeall controllers models tests data asw ell as database 
 https://youtu.be/eTSJxf4gRlQ?si=cxDg87ZaBBZ-3K4g
 Create RaceDayMvc project and API settings
+Add API client, DTOs, role filter and sessionsv
