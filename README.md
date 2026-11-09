@@ -26,3 +26,4 @@ Add API client D role filter and sessionsv
 Add account controller login and register pages layout
 Create RaceDayMvc project and API settings
 updated api controllers
+created vieo explanation
