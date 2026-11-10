@@ -27,6 +27,7 @@ Add account controller login and register pages layout
 edited api
 edited database
 added docker i tried to add it 
+https://youtu.be/zhgwb9e2EiQ?si=vQkDJl5po38ki7kQ
 Create RaceDayMvc project and API settings
 updated api controllers
 created vieo explanation
