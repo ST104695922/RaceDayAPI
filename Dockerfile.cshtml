@@ -1,0 +1,32 @@
+﻿# ---------- Build stage ----------
+# The full SDK is only used to compile and publish the application.
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copy only the project file first so the restore layer is cached
+# and is not repeated every time a source file changes.
+COPY RaceDayMVC.csproj ./
+RUN dotnet restore
+
+# Copy the rest of the source and publish a release build.
+COPY . ./
+RUN dotnet publish RaceDayMVC.csproj -c Release -o /app/publish --no-restore /p:UseAppHost=false
+
+# ---------- Runtime stage ----------
+# The small ASP.NET runtime image does not contain the SDK or the source code.
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
+WORKDIR /app
+COPY --from=build /app/publish ./
+
+# Listen on port 8080 and use the API running on the host machine by default.
+# Override ApiSettings__BaseUrl with -e when the API lives somewhere else.
+ENV ASPNETCORE_ENVIRONMENT=Production \
+    ASPNETCORE_HTTP_PORTS=8080 \
+    ApiSettings__BaseUrl=http://host.docker.internal:5214/
+
+EXPOSE 8080
+
+# Run as the non-root user that ships with the .NET images.
+USER app
+
+ENTRYPOINT ["dotnet", "RaceDayMVC.dll"]
