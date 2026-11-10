@@ -26,6 +26,7 @@ Add API client D role filter and sessionsv
 Add account controller login and register pages layout
 edited api
 edited database
+added docker
 Create RaceDayMvc project and API settings
 updated api controllers
 created vieo explanation
