@@ -1,0 +1,64 @@
+﻿@model EventEnrolmentsViewModel
+@{
+    ViewData["Title"] = "Results";
+    var entrants = Model.Enrolments.Where(e => e.Status != "Cancelled").ToList();
+}
+
+<a asp-action="Events" class="rd-back">&larr; Manage events</a>
+<div class="rd-page-head d-flex justify-content-between align-items-end flex-wrap gap-2">
+    <div>
+        <h1 class="rd-heading mb-0">Results entry</h1>
+        <p class="rd-meta mb-0">@Model.Event.EventName &middot; @Model.Event.EventDate.ToString("dd MMM yyyy") &middot; <partial name="_StatusBadge" model="Model.Event.Status" /></p>
+    </div>
+    @if (entrants.Any(e => e.FinishTime.HasValue) && Model.Event.Status != "Completed")
+    {
+        <form asp-action="PublishResults" method="post" onsubmit="return confirm('Publish results and mark this event as Completed?');">
+            <input type="hidden" name="eventId" value="@Model.Event.EventId" />
+            <button type="submit" class="btn btn-primary">Publish results</button>
+        </form>
+    }
+</div>
+
+<p class="rd-meta">Enter each finisher's time as <strong>hh:mm:ss</strong> and their finishing position, then save the row. Participants see saved results straight away.</p>
+
+@if (entrants.Count == 0)
+{
+    <div class="rd-empty"><h3>No participants to score</h3><p class="mb-0">Results can be captured once participants have enrolled.</p></div>
+}
+else
+{
+    <div class="rd-panel p-0">
+        <div class="table-responsive">
+            <table class="table rd-table align-middle mb-0">
+                <thead><tr><th>Participant</th><th>Category</th><th>Status</th><th>Finish time</th><th>Position</th><th></th></tr></thead>
+                <tbody>
+                    @foreach (var e in entrants)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@e.ParticipantName</td>
+                            <td>@e.CategoryName</td>
+                            <td><partial name="_StatusBadge" model="e.Status" /></td>
+                            <td style="min-width:140px">
+                                <input name="finishTime" form="f-@e.EnrolmentId" class="form-control form-control-sm" placeholder="01:45:30"
+                                       value="@(e.FinishTime.HasValue? DisplayHelper.FinishTime(e.FinishTime.Value) : "")"
+                                       pattern="\d{1,2}:\d{2}:\d{2}" required />
+                            </td>
+                            <td style="min-width:100px">
+                                <input name="position" form="f-@e.EnrolmentId" type="number" min="1" class="form-control form-control-sm" value="@e.Position" />
+                            </td>
+                            <td class="text-end">
+                                @* The inputs above belong to this form through their form attribute. *@
+                                <form id="f-@e.EnrolmentId" asp-action="SaveResult" method="post">
+                                    <input type="hidden" name="eventId" value="@Model.Event.EventId" />
+                                    <input type="hidden" name="enrolmentId" value="@e.EnrolmentId" />
+                                    <input type="hidden" name="resultId" value="@e.ResultId" />
+                                    <button type="submit" class="btn btn-sm @(e.ResultId == null ? "btn-primary" : "btn-outline-primary")">@(e.ResultId == null ? "Save" : "Update")</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

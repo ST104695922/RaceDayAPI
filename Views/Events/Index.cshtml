@@ -1,0 +1,58 @@
+﻿@model RaceDayMvc.Models.EventBrowseViewModel
+
+@{
+    ViewData["Title"] = "Browse Events";
+}
+
+<div class="container mt-4">
+    <h2>Browse Races & Events</h2>
+    <hr />
+
+    <!-- Search and Filter Form -->
+    <form method="get" asp-action="Index" class="row g-3 mb-4">
+        <div class="col-md-5">
+            <label for="search" class="form-label">Search by Name or Location</label>
+            <input type="text" class="form-control" id="search" name="search" value="@Model.Search" placeholder="Enter race name or location...">
+        </div>
+        <div class="col-md-4">
+            <label for="eventType" class="form-label">Event Type</label>
+            <input type="text" class="form-control" id="eventType" name="eventType" value="@Model.EventType" placeholder="e.g. Marathon, Triathlon...">
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary w-100 me-2">Filter</button>
+            <a asp-action="Index" class="btn btn-secondary w-100">Reset</a>
+        </div>
+    </form>
+
+    <!-- Events Table / List -->
+    @if (Model.Events != null && Model.Events.Any())
+    {
+        <div class="row">
+            @foreach (var ev in Model.Events)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title text-primary">@ev.EventName</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@ev.EventDate.ToString("yyyy-MM-dd")</h6>
+                            <p class="card-text">
+                                <strong>Location:</strong> @ev.Location <br />
+                                <strong>Type:</strong> @ev.EventType <br />
+                                <strong>Status:</strong> <span class="badge bg-success">@ev.Status</span>
+                            </p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0">
+                            <a asp-action="Details" asp-route-id="@ev.EventId" class="btn btn-outline-primary w-100">View Details & Categories</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No events found matching your search criteria.
+        </div>
+    }
+</div>

@@ -1,0 +1,57 @@
+﻿@model EventBrowseViewModel
+@{
+    ViewData["Title"] = "Upcoming events";
+}
+
+<div class="rd-page-head">
+    <h1 class="rd-heading">Upcoming events</h1>
+    <p class="rd-meta">Choose an event, pick your category and enter in a few clicks.</p>
+</div>
+
+<form method="get" asp-controller="Home" asp-action="Index" class="rd-filter row g-2 align-items-end mb-4">
+    <div class="col-md-4">
+        <label class="form-label" for="search">Search</label>
+        <input id="search" name="search" value="@Model.Search" class="form-control" placeholder="Event name or location" />
+    </div>
+    <div class="col-md-3">
+        <label class="form-label" for="eventType">Event type</label>
+        <select id="eventType" name="eventType" class="form-select">
+            <option value="">All types</option>
+            @foreach (var type in DisplayHelper.EventTypes)
+            {
+                <option value="@type" selected="@(Model.EventType == type)">@type</option>
+            }
+        </select>
+    </div>
+    <div class="col-md-3">
+        <label class="form-label" for="distance">Distance</label>
+        <select id="distance" name="distance" class="form-select">
+            <option value="">Any distance</option>
+            <option value="short" selected="@(Model.Distance == "short")">Up to 5 km</option>
+            <option value="medium" selected="@(Model.Distance == "medium")">5 &ndash; 10 km</option>
+            <option value="long" selected="@(Model.Distance == "long")">10 &ndash; 21.1 km</option>
+            <option value="ultra" selected="@(Model.Distance == "ultra")">Over 21.1 km</option>
+        </select>
+    </div>
+    <div class="col-md-2 d-flex gap-2">
+        <button type="submit" class="btn btn-primary flex-fill">Filter</button>
+        <a class="btn btn-outline-secondary" asp-action="Index">Clear</a>
+    </div>
+</form>
+
+@if (Model.Events.Count == 0)
+{
+    <div class="rd-empty">
+        <h3>No events found</h3>
+        <p>Try changing or clearing the filters &mdash; new events are added all the time.</p>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var item in Model.Events)
+        {
+            <div class="col-sm-6 col-lg-4"><partial name="_EventCard" model="item" /></div>
+        }
+    </div>
+}

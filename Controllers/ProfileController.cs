@@ -1,169 +1,103 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RaceDayAPI.Data;
-using RaceDayAPI.Models;
-using RaceDayAPI.Security;
+﻿using Microsoft.AspNetCore.Mvc;
+using RaceDayMvc.Filters;
+using RaceDayMvc.Models;
+using RaceDayMvc.Models.Api;
+using RaceDayMvc.Services;
 
-namespace RaceDayAPI.Controllers
+namespace RaceDayMvc.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    [SessionAuthorize]
-    public class ProfileController : ControllerBase
+    // View and update personal information and the profile picture.
+    [RoleAuthorize]
+    public class ProfileController : BaseController
     {
-        private readonly RaceDayContext _context;
-
-        public ProfileController(RaceDayContext context)
+        public ProfileController(RaceDayApiClient api) : base(api)
         {
-            _context = context;
         }
 
-        // View the profile belonging to the logged-in user.
+        // GET: /Profile
         [HttpGet]
-        public async Task<IActionResult> GetProfile()
+        public async Task<IActionResult> Index()
         {
-            string? userId = HttpContext.Session.GetString("UserId");
-            string? role = HttpContext.Session.GetString("Role");
+            var result = await Api.GetAsync<ProfileDto>("api/Profile");
 
-            if (role == "Participant")
+            if (result.IsUnauthorized)
+                return SessionExpired();
+
+            if (!result.Success || result.Data == null)
             {
-                var user = await _context.Users
-                    .AsNoTracking()
-                    .SingleOrDefaultAsync(u => u.UserId == userId);
-
-                if (user == null)
-                    return NotFound(new { message = "Profile not found." });
-
-                return Ok(new
-                {
-                    user.UserId,
-                    user.FullName,
-                    user.Email,
-                    Role = user.Role
-                });
+                SetError(result.Message);
+                return RedirectToAction("Index", "Home");
             }
 
-            if (role == "Organiser")
-            {
-                var organiser = await _context.Organisers
-                    .AsNoTracking()
-                    .SingleOrDefaultAsync(o => o.OrganiserId == userId);
-
-                if (organiser == null)
-                    return NotFound(new { message = "Profile not found." });
-
-                return Ok(new
-                {
-                    organiser.OrganiserId,
-                    organiser.FullName,
-                    organiser.Email,
-                    Role = "Organiser"
-                });
-            }
-
-            return Unauthorized(new { message = "Please log in again." });
+            return View(ToViewModel(result.Data));
         }
 
-        // Update the name and email of the logged-in user.
-        // The user cannot change their own role or ID.
-        [HttpPut]
-        public async Task<IActionResult> UpdateProfile(
-            UpdateProfileRequest request)
+        // POST: /Profile/Update
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(ProfileViewModel model)
         {
             if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            string? userId = HttpContext.Session.GetString("UserId");
-            string? role = HttpContext.Session.GetString("Role");
-
-            string email = request.Email.Trim();
-            string fullName = request.FullName.Trim();
-
-            if (string.IsNullOrWhiteSpace(fullName) ||
-                string.IsNullOrWhiteSpace(email))
             {
-                return BadRequest(new
-                {
-                    message = "Name and email are required."
-                });
+                return View("Index", model);
             }
 
-            // Handle Participant profiles.
-            if (role == "Participant")
+            var result = await Api.PutAsync<ProfileDto>("api/Profile", new
             {
-                var user = await _context.Users
-                    .SingleOrDefaultAsync(u => u.UserId == userId);
+                fullName = model.FullName,
+                email = model.Email
+            });
 
-                if (user == null)
-                    return NotFound(new { message = "Profile not found." });
+            if (result.IsUnauthorized)
+                return SessionExpired();
 
-                bool emailUsedByAnotherAccount =
-                    await _context.Users.AnyAsync(
-                        u => u.Email == email && u.UserId != userId)
-                    ||
-                    await _context.Organisers.AnyAsync(
-                        o => o.Email == email);
-
-                if (emailUsedByAnotherAccount)
-                    return Conflict(new
-                    {
-                        message = "That email address is already in use."
-                    });
-
-                user.FullName = fullName;
-                user.Email = email;
-
-                await _context.SaveChangesAsync();
-
-                return Ok(new
-                {
-                    message = "Profile updated successfully.",
-                    user.UserId,
-                    user.FullName,
-                    user.Email,
-                    Role = user.Role
-                });
+            if (!result.Success)
+            {
+                ModelState.AddModelError(string.Empty, result.Message);
+                return View("Index", model);
             }
 
-            // Handle Organiser profiles.
-            if (role == "Organiser")
+            // Keep the name shown in the navigation bar up to date.
+            HttpContext.Session.SetString("FullName", model.FullName.Trim());
+
+            SetSuccess("Your profile has been updated.");
+            return RedirectToAction(nameof(Index));
+        }
+
+        // POST: /Profile/UploadPicture
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UploadPicture(IFormFile? picture)
+        {
+            if (picture == null || picture.Length == 0)
             {
-                var organiser = await _context.Organisers
-                    .SingleOrDefaultAsync(o => o.OrganiserId == userId);
-
-                if (organiser == null)
-                    return NotFound(new { message = "Profile not found." });
-
-                bool emailUsedByAnotherAccount =
-                    await _context.Organisers.AnyAsync(
-                        o => o.Email == email && o.OrganiserId != userId)
-                    ||
-                    await _context.Users.AnyAsync(
-                        u => u.Email == email);
-
-                if (emailUsedByAnotherAccount)
-                    return Conflict(new
-                    {
-                        message = "That email address is already in use."
-                    });
-
-                organiser.FullName = fullName;
-                organiser.Email = email;
-
-                await _context.SaveChangesAsync();
-
-                return Ok(new
-                {
-                    message = "Profile updated successfully.",
-                    organiser.OrganiserId,
-                    organiser.FullName,
-                    organiser.Email,
-                    Role = "Organiser"
-                });
+                SetError("Please choose a picture to upload.");
+                return RedirectToAction(nameof(Index));
             }
 
-            return Unauthorized(new { message = "Please log in again." });
+            // The file goes to the API, which stores it in Azure Blob Storage.
+            var result = await Api.PostFileAsync<object>("api/Profile/picture", picture);
+
+            if (result.IsUnauthorized)
+                return SessionExpired();
+
+            if (result.Success)
+                SetSuccess("Your profile picture has been updated.");
+            else
+                SetError(result.Message);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        private static ProfileViewModel ToViewModel(ProfileDto dto)
+        {
+            return new ProfileViewModel
+            {
+                FullName = dto.FullName,
+                Email = dto.Email,
+                Role = dto.Role,
+                ProfilePictureUrl = dto.ProfilePictureUrl
+            };
         }
     }
 }

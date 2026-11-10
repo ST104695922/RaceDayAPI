@@ -1,0 +1,35 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Log in";
+}
+<div class="rd-center-card">
+    <h1 class="rd-heading">Log in</h1>
+    <p class="rd-meta">Welcome back. Pick your account type and get on the start line.</p>
+    <form asp-action="Login" method="post" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div class="rd-role-picker mb-3">
+            <input type="radio" class="btn-check" asp-for="Role" value="Participant" id="roleParticipant" />
+            <label class="btn btn-outline-primary" for="roleParticipant">Participant</label>
+            <input type="radio" class="btn-check" asp-for="Role" value="Organiser" id="roleOrganiser" />
+            <label class="btn btn-outline-primary" for="roleOrganiser">Organiser</label>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" autocomplete="email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label"></label>
+            <input asp-for="Password" class="form-control" autocomplete="current-password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Log in</button>
+    </form>
+    <p class="rd-meta mt-3 mb-0">New to RaceDay? <a asp-action="Register">Create an account</a></p>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

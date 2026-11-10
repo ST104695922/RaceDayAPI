@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+<section class="rd-hero">
+    <div class="rd-hero-inner">
+        <p class="rd-kicker">Road. Trail. Track.</p>
+        <h1>Find your next<br />start line.</h1>
+        <p class="lead">RaceDay connects runners and riders with the events that matter &mdash; enter in seconds, follow your results, and run it again.</p>
+        <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-primary btn-lg" asp-controller="Account" asp-action="Register">Join RaceDay</a>
+            <a class="btn btn-outline-light btn-lg" asp-controller="Account" asp-action="Login">Log in</a>
+        </div>
+    </div>
+</section>
+
+<section class="row g-4 mt-1">
+    <div class="col-md-4">
+        <div class="rd-feature"><h3>Participants</h3><p>Browse upcoming events, filter by type and distance, enter a category and track your finish times.</p></div>
+    </div>
+    <div class="col-md-4">
+        <div class="rd-feature"><h3>Organisers</h3><p>Create events with banners, build categories, confirm enrolments and publish results.</p></div>
+    </div>
+    <div class="col-md-4">
+        <div class="rd-feature"><h3>Live status</h3><p>Colour-coded enrolments show at a glance who is confirmed, pending or cancelled.</p></div>
+    </div>
+</section>

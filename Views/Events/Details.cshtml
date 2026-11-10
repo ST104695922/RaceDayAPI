@@ -1,0 +1,94 @@
+﻿@model EventDetailsViewModel
+@{
+    ViewData["Title"] = Model.Event.EventName;
+}
+
+<a asp-controller="Home" asp-action="Index" class="rd-back">&larr; All events</a>
+
+<div class="rd-banner mb-4">
+    @if (!string.IsNullOrWhiteSpace(Model.Event.BannerUrl))
+    {
+        <img src="@Model.Event.BannerUrl" alt="Banner for @Model.Event.EventName" />
+    }
+    else
+    {
+        <div class="rd-banner-placeholder"><span>@Model.Event.EventType</span></div>
+    }
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-7">
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+            <span class="rd-chip">@Model.Event.EventType</span>
+            <partial name="_StatusBadge" model="Model.Event.Status" />
+        </div>
+        <h1 class="rd-heading">@Model.Event.EventName</h1>
+        <p class="lead rd-meta">@(string.IsNullOrWhiteSpace(Model.Event.Description) ? "More details coming soon." : Model.Event.Description)</p>
+    </div>
+    <div class="col-lg-5">
+        <div class="rd-panel">
+            <dl class="rd-facts mb-0">
+                <dt>Date</dt>
+                <dd>@Model.Event.EventDate.ToString("dddd, dd MMMM yyyy")</dd>
+                <dt>Location</dt>
+                <dd>@Model.Event.Location</dd>
+                <dt>Distance</dt>
+                <dd>@(Model.Event.DistanceKm.HasValue? Model.Event.DistanceKm.Value.ToString("0.##") + " km" : "See categories")</dd>
+                <dt>Type</dt>
+                <dd>@Model.Event.EventType</dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<h2 class="rd-subheading mt-5">Categories</h2>
+
+@if (Model.Categories.Count == 0)
+{
+    <div class="rd-empty"><p class="mb-0">The organiser has not added categories yet. Check back soon.</p></div>
+}
+else
+{
+    <form asp-controller="Events" asp-action="Enrol" method="post">
+        <input type="hidden" name="eventId" value="@Model.Event.EventId" />
+        <div class="rd-panel p-0">
+            <div class="table-responsive">
+                <table class="table rd-table align-middle mb-0">
+                    <thead>
+                        <tr><th></th><th>Category</th><th>Distance</th><th>Entry fee</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var c in Model.Categories)
+                        {
+                            bool entered = Model.EnrolledCategoryIds.Contains(c.CategoryId);
+                            <tr>
+                                <td style="width:48px">
+                                    @if (Model.IsOpen && !entered)
+                                    {
+                                        <input class="form-check-input" type="radio" name="categoryId" value="@c.CategoryId" id="cat-@c.CategoryId" />
+                                    }
+                                </td>
+                                <td><label for="cat-@c.CategoryId" class="mb-0">@c.CategoryName</label></td>
+                                <td>@c.DistanceKm.ToString("0.##") km</td>
+                                <td>R @c.EntryFee.ToString("N2")</td>
+                                <td class="text-end">@if (entered) {
+                                <span class="rd-status status-confirmed">Entered</span>
+                            }
+    </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @if (Model.IsOpen)
+    {
+        <button type="submit" class="btn btn-primary btn-lg mt-3">Enter event</button>
+    }
+    else
+    {
+        <div class="alert alert-secondary mt-3 mb-0">This event is no longer open for entries.</div>
+    }
+</form>
+}

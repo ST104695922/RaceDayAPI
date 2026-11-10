@@ -1,0 +1,66 @@
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.AssemblyInfoInputs.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.AssemblyInfo.cs
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.csproj.CoreCompileInputs.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.RazorAssemblyInfo.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.RazorAssemblyInfo.cs
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\appsettings.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.staticwebassets.runtime.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.staticwebassets.endpoints.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.exe
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.deps.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.runtimeconfig.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.pdb
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\bundle\RaceDayMVC.styles.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\projectbundle\RaceDayMVC.bundle.scp.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\refint\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.pdb
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.genruntimeconfig.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\ref\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\appsettings.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.staticwebassets.runtime.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.staticwebassets.endpoints.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.exe
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.deps.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.runtimeconfig.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\bin\Debug\net8.0\RaceDayMVC.pdb
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.AssemblyInfoInputs.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.AssemblyInfo.cs
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.csproj.CoreCompileInputs.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.RazorAssemblyInfo.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.RazorAssemblyInfo.cs
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\bundle\RaceDayMVC.styles.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\scopedcss\projectbundle\RaceDayMVC.bundle.scp.css
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.development.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\refint\RaceDayMVC.dll
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.pdb
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\RaceDayMVC.genruntimeconfig.cache
+C:\Users\Student\OneDrive - ADvTECH Ltd\Desktop\prog-assignment2 apiraceday (3)\prog-assignment2 apiraceday\RaceDayMVC\obj\Debug\net8.0\ref\RaceDayMVC.dll

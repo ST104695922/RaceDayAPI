@@ -1,0 +1,63 @@
+﻿@model List<EnrolmentDto>
+@{
+    ViewData["Title"] = "My Results";
+    var finished = Model.Where(e => e.FinishTime.HasValue).OrderByDescending(e => e.EventDate).ToList();
+    var waiting = Model.Where(e => !e.FinishTime.HasValue && e.Status != "Cancelled" && e.EventDate.Date < DateTime.Today).ToList();
+}
+
+<div class="rd-page-head">
+    <h1 class="rd-heading">My results</h1>
+    <p class="rd-meta">Finish times and positions are captured by the organiser after each event.</p>
+</div>
+
+@if (finished.Count == 0)
+{
+    <div class="rd-empty">
+        <h3>No results yet</h3>
+        <p>Once an organiser publishes your finish time it will appear here.</p>
+    </div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (var r in finished)
+        {
+            <div class="col-md-6 col-lg-4">
+                <div class="card rd-card h-100">
+                    <div class="card-body">
+                        <span class="rd-chip">@r.CategoryName</span>
+                        <h5 class="card-title mt-2">@r.EventName</h5>
+                        <p class="rd-meta">@r.EventDate.ToString("dd MMM yyyy") &middot; @r.Location</p>
+                        <div class="rd-result-time">@DisplayHelper.FinishTime(r.FinishTime!.Value)</div>
+                        @if (r.Position.HasValue)
+                        {
+                            <p class="mb-0 fw-semibold">
+                                @DisplayHelper.Ordinal(r.Position.Value) out of @r.FinishersCount finishers
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="mb-0 rd-meta">Position not recorded</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@if (waiting.Count > 0)
+{
+    <h2 class="rd-subheading mt-5">Waiting for results</h2>
+    <div class="rd-panel p-0">
+        <table class="table rd-table mb-0">
+            <thead><tr><th>Event</th><th>Date</th><th>Category</th></tr></thead>
+            <tbody>
+                @foreach (var w in waiting)
+                {
+                    <tr><td>@w.EventName</td><td>@w.EventDate.ToString("dd MMM yyyy")</td><td>@w.CategoryName</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
