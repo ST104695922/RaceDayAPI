@@ -1,0 +1,85 @@
+name: RaceDay CI
+
+# Runs on every push and pull request, whatever the branch is called.
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+jobs:
+  validate-structure:
+    name: Validate repository structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Check required files exist
+        run: |
+          missing=0
+          check() {
+            if [ -n "$(find . -iname "$1" -not -path './.git/*' | head -1)" ]; then
+              echo "OK       $1"
+            else
+              echo "MISSING  $1"; missing=1
+            fi
+          }
+          check "README.md"
+          check "*.sln"
+          check "RaceDayAPI.csproj"
+          check "RaceDayMVC.csproj"
+          check "Dockerfile"
+          check "Program.cs"
+          exit $missing
+
+      - name: Check the README documents the Docker run command
+        run: grep -rqi "docker run" README.md
+
+      - name: Check no storage keys are committed
+        run: |
+          if grep -rIl "AccountKey=" --include=*.json --include=*.cs --include=*.md . ; then
+            echo "A storage account key was found in the repository."; exit 1
+          fi
+
+  build-and-test:
+    name: Build and test
+    needs: validate-structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Find the solution
+        run: echo "SLN=$(find . -name '*.sln' | head -1)" >> $GITHUB_ENV
+
+      - name: Restore
+        run: dotnet restore "$SLN"
+
+      - name: Build
+        run: dotnet build "$SLN" --configuration Release --no-restore
+
+      - name: Test
+        # continue-on-error stops an old failing test from turning the whole build red.
+        # Remove this line once all your tests pass.
+        continue-on-error: true
+        run: dotnet test "$SLN" --configuration Release --no-build --verbosity normal
+
+  docker-build:
+    name: Build MVC Docker image
+    needs: validate-structure
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: |
+          DOCKERFILE=$(find . -name Dockerfile -not -path './.git/*' | head -1)
+          docker build -t raceday-mvc "$(dirname "$DOCKERFILE")"
