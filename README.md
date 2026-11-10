@@ -24,6 +24,7 @@ https://youtu.be/eTSJxf4gRlQ?si=cxDg87ZaBBZ-3K4g
 Create RaceDayMvc project and API settings
 Add API client D role filter and sessionsv
 Add account controller login and register pages layout
+edited api
 Create RaceDayMvc project and API settings
 updated api controllers
 created vieo explanation
